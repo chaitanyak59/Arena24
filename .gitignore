@@ -1,0 +1,9 @@
+/vendor/
+/build/
+# ignore log files and databases
+*.log
+
+composer.phar
+/vendor/
+.DS_Store
+

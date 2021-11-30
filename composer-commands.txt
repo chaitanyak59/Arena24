@@ -1,0 +1,5 @@
+//Trigger when new namespaces are created
+composer dump-autoload -o
+
+//Composer clear cache
+composer clear-cache

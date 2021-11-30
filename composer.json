@@ -1,0 +1,15 @@
+{
+    "name": "chaitanya/arena24php",
+    "authors": [
+        {
+            "name": "chaitanyak59",
+            "email": "chaitanyak59@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Arena\\": "src/"
+        }
+    }
+}
