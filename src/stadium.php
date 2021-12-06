@@ -1,31 +1,36 @@
 <?php
 namespace Arena;
-use Arena\Database\Users;
+use Arena\Database\Stadiums;
 
 $is_success = false;
-$validationerrors = ["name" => NULL, "email" => NULL, "password" => NUll, "db_error" => NULL];
-$name = $email = $password = '';
+$validationerrors = ["name" => NULL, "location" => NULL, "phone_number" => NUll, "max_bookings" => NULL, "db_error" => NULL];
+$name = $location = $phone_number = '';
+$max_bookings = NULL;
 if (isset($_POST['submit'])) {
-    $email = htmlspecialchars($_POST['email']);
     $name = htmlspecialchars($_POST['name']);
-    $password = htmlspecialchars($_POST['password']);
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $message = "Invalid Email Address ";
-        $validationerrors["email"] = $message;
+    $location = htmlspecialchars($_POST['location']);
+    $phone_number = htmlspecialchars($_POST['phone_number']);
+    $max_bookings = (int)htmlspecialchars($_POST['max_bookings']);
+
+    if (empty($name) || !preg_match('/^[a-zA-Z\s]+$/', $name)) {
+        $validationerrors["name"] = "Stadium Name cannot be empty/invalid";
     }
-    if (empty($name) || strlen($name) < 3 || !preg_match('/^[a-zA-Z\s]+$/', $name)) {
-        $validationerrors["name"] = "Invalid Account Name";
+    if (empty($location) || strlen($location) < 3 || !preg_match('/^[a-zA-Z\s]+$/', $location)) {
+        $validationerrors["name"] = "Invalid Location";
     }
-    if (empty($password) || strlen($password) < 6) {
-        $validationerrors["password"] = "Password should be minimum 6 characters";
+    if (empty($phone_number) || strlen($phone_number) < 10) {
+        $validationerrors["phone_number"] = "Invalid Phone Number";
+    }
+    if (empty(htmlspecialchars($_POST['max_bookings'])) || $max_bookings > 50) {
+        $validationerrors["max_bookings"] = "Invalid Max Bookings entered";
     }
     //NO Errors Save to DB
     if (!array_filter($validationerrors)) {
-        $status = Users::createUserAccount($name, $email, $password);
+        $status = Stadiums::registerStadium($name, $location, $phone_number, $max_bookings);
         if($status == "Success") {
             $is_success = true;
         } else {
-            $validationerrors["db_error"] = "Failed to Create Account";
+            $validationerrors["db_error"] = "Failed to Register Stadium:[$status]";
         }
     }
 }
@@ -33,12 +38,12 @@ if (isset($_POST['submit'])) {
 ?>
 <main>
     <div class="container">
-        <h3>Register Your Stadium</h3>
+        <h3>Register Your Arena</h3>
         <?php if ($is_success) : ?>
             <div class="row">
-                <h5 class="col s12"><blockquote>Status: Account Created Successfully</blockquote></h5>
+                <h5 class="col s12"><blockquote>Status: Stadium Registered Successfully</blockquote></h5>
                 <div class="col s6">
-                    <a href="login.php" class="btn-small waves-effect waves-light blue-grey darken-4">Login</a>
+                    <a href="index.php" class="btn-small waves-effect waves-light blue-grey darken-4">Go to Home</a>
                 </div>
             </div>
         <?php else : ?>
@@ -54,21 +59,28 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input value="<?php echo $email ?>" id="email" name="email" type="email" class="validate" required>
-                            <label class="active" for="email">Email</label>
-                            <span class="helper-text" data-success="Email validated"><?php echo $validationerrors["email"] ?></span>
+                            <input value="<?php echo $location ?>" id="location" name="location" type="text" class="validate" required>
+                            <label class="active" for="location">Location</label>
+                            <span class="helper-text"><?php echo $validationerrors["location"] ?></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input name="password" id="password" type="password" class="validate" min=6>
-                            <label class="active" for="password">Password</label>
-                            <span class="helper-text"><?php echo $validationerrors["password"] ?></span>
+                            <input name="phone_number" id="phone_number" type="number" class="validate" minlength=10 maxlength=15>
+                            <label class="active" for="phone_number">Phone Number</label>
+                            <span class="helper-text"><?php echo $validationerrors["phone_number"] ?></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="max_bookings" id="max_bookings" type="number" class="validate" min=1 max=50 maxlength="2">
+                            <label class="active" for="max_bookings">Maximum Available Bookings</label>
+                            <span class="helper-text"><?php echo $validationerrors["max_bookings"] ?></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
-                            <input type="submit" name="submit" value="Create Account" id="submit" class="btn blue-grey darken-4" />
+                            <input type="submit" name="submit" value="Register Stadium" id="submit" class="btn blue-grey darken-4" />
                         </div>
                         <div class="col s6">
                             <input type="reset" value="Reset" id="reset" class="btn blue-grey darken-4" />

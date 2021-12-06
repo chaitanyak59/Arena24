@@ -14,12 +14,12 @@ class Connection {
       if(self::$connection == null) {
           $url = Env::getDBUrl();
           $parsed = App::parseDBURL($url);
-          $connection = mysqli_connect($parsed['host'], $parsed['user'], $parsed['pass'], $parsed['database'], $parsed['port']);
-          if(mysqli_connect_errno() || !$connection ) {
+          self::$connection = mysqli_connect($parsed['host'], $parsed['user'], $parsed['pass'], $parsed['database'], $parsed['port']);
+          if(mysqli_connect_errno() || !self::$connection ) {
             die("Failed to Connect to Database");
           }
       }
-      return $connection;
+      return self::$connection;
   }
 
   public static function closeConn(): bool {

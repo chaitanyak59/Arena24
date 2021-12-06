@@ -5,7 +5,7 @@ use \mysqli;
 
 class Users {
 
- private static function getConn(): mysqli {
+ private static function getConn(): ?mysqli {
      return Connection::getConnection();
  }
 

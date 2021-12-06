@@ -46,7 +46,7 @@
                         below to register your details
                     </p>
                     <div class="row center-align">
-                        <a href="src/register-stadium.php" target="_blank" rel="noopener noreferrer" class="btn-small waves-effect waves-light blue-grey darken-4">Register Venue</a>
+                        <a href="create-stadium.php" class="btn-small waves-effect waves-light blue-grey darken-4">Register Venue</a>
                     </div>
                 </div>
             </div>
