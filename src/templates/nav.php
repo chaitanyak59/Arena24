@@ -1,3 +1,4 @@
+<header>
 <!-- Check Logged In or not -->
 <ul id="dropdown-account" class="dropdown-content" appears="desktop">
     <?php if ($loggedInUser == NULL) : ?>
@@ -22,7 +23,6 @@
         <li><a href="logout.php">Logout</a></li>
     <?php endif; ?>
 </ul>
-<header>
     <nav>
         <div class="nav-wrapper blue-grey darken-4 z-depth-5">
             <a href="#" class="sidenav-trigger" data-target="sm-menu"><i class="material-icons">menu</i></a>

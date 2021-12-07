@@ -40,6 +40,10 @@ class Env {
     public static function getEmailHostProvider(): string {
         return getenv("API_HOST_SENDGRID");
     }
+
+    public static function useHTTPS(): bool {
+        return getenv("HTTPS") == "1";
+    }
 }
 
 ?>
