@@ -56,7 +56,7 @@ class Users {
         $status["is_valid"] = false;
         return $status;
     }
-    $status["is_valid"] = password_verify($password, $status['hash']) ? true : false;
+    $status["is_valid"] = password_verify($password, $user_info['hash']) ? true : false;
     $status = array_merge($status,$user_info);
     return $status;
  }
