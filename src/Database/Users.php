@@ -26,24 +26,31 @@ class Users {
  }
 
 
- public static function authenticateUser(string $email, string $password): string {
+ public static function authenticateUser(string $email, string $password): array {
+    $status = ["db_error" => NULL, "is_valid" => NULL];
     $conn = self::getConn();
 
-    $sql = "SELECT id,email,hash FROM users WHERE email=? and is_actived=true and is_deleted=false;";
+    $sql = "SELECT id,name,hash FROM users WHERE email=? and is_activated=true and is_deleted=false;";
     $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        $status["db_error"] = "Database Error";
+        return $status;
+    }
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
     $user_info =  $result->fetch_assoc();
-    if(count($user_info) == 0) {
-        return "Failed";
+    if($user_info == null || count($user_info) == 0) {
+        $status["is_valid"] = false;
+        return $status;
     }
-    if(!password_verify($password, $user_info['hash'])) {
-        return "Failed";
-    } else {
-        return "Success";
+    //Storing User Details
+    foreach($user_info as $x => $value) {
+        $status[$x] = $value;
     }
+    $status["is_valid"] = password_verify($password, $status['hash']) ? true : false;
+    return $status;
  }
 
  public static function updateAccountActive(int $id, string $email): string {

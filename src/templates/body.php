@@ -1,6 +1,6 @@
 <main>
 <div class="parallax-container">
-    <div class="parallax"><img src="src/images/bg2-stadium.jpg"></div>
+    <div class="parallax"><img src="src/images/bg2-stadium.jpg" loading="lazy"></div>
 </div>
 <div class="container">
     <div class="section">

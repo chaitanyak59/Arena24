@@ -16,6 +16,10 @@ class Env {
         return in_array($_SERVER['REMOTE_ADDR'], App::getWhitelistUrls());
     }
 
+    //Temporary For Heroku Domains
+    public static function getDomain(): string {
+      return self::isDev() ? "localhost" : "arena-24.herokuapp.com";
+    }
 }
 
 ?>
