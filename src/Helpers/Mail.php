@@ -11,7 +11,7 @@ class Mail {
                                 <h3>Your account has been created succesfully.<br>
                                  You can login to website and start booking your spots.<br>
 
-                                 <mark><a href='https://arena-24.herokuapp.com/' target='_blank' style='text-decoration:underline'>Click to login</a></mark><br><br><br>
+                                 <mark><a href='https://arena-24.herokuapp.com/login.php' target='_blank' style='text-decoration:underline'>Click to login</a></mark><br><br><br>
                                  Thankyou,<br>Team Arena24.</h3>",$userName);
             self::prepareMailing($toAddress, "Account Created Successfully", $body);
             return "Success";

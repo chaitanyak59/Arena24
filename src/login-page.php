@@ -27,8 +27,8 @@ if (isset($_POST['submit'])) {
             $validationerrors["db_error"] = "Failed To Login: " . $status["db_error"];
         } else {
             if ($status["is_valid"]) {
-                setcookie('User', $status['name'], time()+86400, "/", Env::getDomain(), isset($_SERVER["HTTPS"]), true);
-                setcookie('ID', $status['id'], time()+86400, "/", Env::getDomain(), isset($_SERVER["HTTPS"]), true);
+                setcookie('User', $status['name'], time()+86400, "/", Env::getDomain(), Env::useHTTPS(), true);
+                setcookie('ID', $status['id'], time()+86400, "/", Env::getDomain(), Env::useHTTPS(), true);
                 $is_success = true;
                 header("Location: ./");
             } else {

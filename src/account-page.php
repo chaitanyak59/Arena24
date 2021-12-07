@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
         $status = Users::createUserAccount($name, $email, $password);
         if($status == "Success") {
             $is_success = true;
-            Mail::notifyUserCreated($email, $name);
+            // Mail::notifyUserCreated($email, $name);
         } else {
             $validationerrors["db_error"] = "Failed to Create Account:[$status]";
         }
