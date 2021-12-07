@@ -1,6 +1,7 @@
 <?php
 namespace Arena;
 use Arena\Database\Users;
+use Arena\Helpers\Mail;
 
 $is_success = false;
 $validationerrors = ["name" => NULL, "email" => NULL, "password" => NUll, "db_error" => NULL];
@@ -24,6 +25,7 @@ if (isset($_POST['submit'])) {
         $status = Users::createUserAccount($name, $email, $password);
         if($status == "Success") {
             $is_success = true;
+            Mail::notifyUserCreated($email, $name);
         } else {
             $validationerrors["db_error"] = "Failed to Create Account:[$status]";
         }

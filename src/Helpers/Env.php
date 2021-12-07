@@ -20,6 +20,26 @@ class Env {
     public static function getDomain(): string {
       return self::isDev() ? "localhost" : "arena-24.herokuapp.com";
     }
+
+    public static function getEmailKey(): string {
+        return getenv("API_KEY_SENDGRID");
+    }
+
+    public static function getEmailUser(): string {
+        return getenv("API_USERNAME_SENDGRID");
+    }
+
+    public static function getEmailPort(): string {
+        return getenv("API_PORT_SENDGRID");
+    }
+
+    public static function getEmailSender(): string {
+        return getenv("API_FROM_EMAIL_SENDGRID");
+    }
+
+    public static function getEmailHostProvider(): string {
+        return getenv("API_HOST_SENDGRID");
+    }
 }
 
 ?>

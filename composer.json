@@ -6,7 +6,10 @@
             "email": "chaitanyak59@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "phpmailer/phpmailer": "6.5",
+        "vlucas/phpdotenv": "5.4"
+    },
     "autoload": {
         "psr-4": {
             "Arena\\": "src/"
