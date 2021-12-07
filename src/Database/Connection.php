@@ -31,3 +31,4 @@ class Connection {
       return true;
   }
 }
+?>

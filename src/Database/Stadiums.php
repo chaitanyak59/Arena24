@@ -25,5 +25,26 @@ class Stadiums {
         $stmt->close();
         return "Success"; //TODO
      }
+
+     public static function getStadiumsList(): array {
+        $status = ["db_error" => NULL, "list" => array()];
+        $conn = self::getConn();
+
+        $sql = "SELECT * FROM stadiums WHERE is_active=true and is_deleted=false;";
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            $status["db_error"] = "Transaction error";
+            return $status;
+        }
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $list =  $result->fetch_all(MYSQLI_ASSOC);
+        if(!isset($list)) {
+            return $status;
+        }
+        $status['list'] = array_merge($status["list"],$list);
+        return $status;
+     }
 }
 ?>

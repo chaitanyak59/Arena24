@@ -1,7 +1,9 @@
 <?php
 //Retrieving Session Details
-$isSuperAdmin = isset($_COOKIE["ID"]) ? ($_COOKIE["ID"] == -1 ? true : false) : false;
+$userID = isset($_COOKIE["ID"]) ? $_COOKIE["ID"] : NULL;
+$isSuperAdmin = $userID == -1 ? true : false;
 $loggedInUser = isset($_COOKIE["User"]) ? $_COOKIE["User"] : NULL;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

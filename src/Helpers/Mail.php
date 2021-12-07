@@ -24,8 +24,8 @@ class Mail {
     public static function notifySpotBooked(string $toAddress, string $userName): string {
         try {
             $body = sprintf("<h2>Hello <b>%s</b>,</h2>
-                                <h3>Your arena spot has been booked successfully.<br>
-                                 Please reach on time and enjoy playing .<br>
+                                <h3>Your arena spot has been booked <u>successfully</u>.<br>
+                                 'Please reach on time and enjoy playing'.<br><br><br>
                                  Thankyou,<br>Team Arena24.</h3>",$userName);
             self::prepareMailing($toAddress, "Booking Created Successfully", $body);
             return "Success";
