@@ -4,8 +4,8 @@ use Arena\Database\Bookings;
 use Arena\Helpers\Mail;
 
 $is_success = false;
-if (isset($_GET['userid']) && isset($_GET['stadiumId'])) {
-    $user_id = (int)$_GET['userid'];
+if (isset($_GET['stadiumId']) && $_COOKIE['ID']) {
+    $user_id = (int)$_COOKIE['ID'];
     $stadiumID = (int) $_GET['stadiumId'];
     $status = Bookings::createBooking($user_id, $stadiumID);
     if($status["is_valid"]) {

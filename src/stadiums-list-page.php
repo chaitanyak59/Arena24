@@ -20,6 +20,7 @@ if (!$status["db_error"]) {
 
     <ul class="sidenav" id="sm-menu" appears="mobile">
         <li class="active"><a href="index.php">Home</a></li>
+        <li><a href="stadiums-list.php">Find Arena</a></li>
         <li><a href="my-bookings.php" class="black-text">My Bookings</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
@@ -60,13 +61,12 @@ if (!$status["db_error"]) {
                                     Location: <?php echo $stadium['location'] ?><br>
                                     Number: <?php echo $stadium['phone_number'] ?>
                                 </p>
-                                <div class="divider"></div>
-                                <p style="position: relative;top: 100%;transform: translateY(100%);display:block;font-size:small">
+                                <p class="right-align" style="position: relative;top: 100%;transform: translateY(100%);display:block;font-size:small">
                                     <b>Available:</b> BasketBall, Tennis, Badminton, Cricket
                                 </p>
                             </div>
-                            <div class="card-action">
-                                <a href="stadium-book.php?userid=<?php echo $userID?>&stadiumId=<?php echo $stadium['id']?>" class="blue-text">Book</a>
+                            <div class="card-action right-align">
+                                <a href="stadium-book.php?stadiumId=<?php echo $stadium['id']?>" class="blue-text">Book</a>
                             </div>
                         </div>
                     </div>

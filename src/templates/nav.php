@@ -18,6 +18,7 @@
         <li><a href="login.php">Login</a></li>
         <li><a href="create-account.php">Signup</a></li>
     <?php else : ?>
+        <li><a href="stadiums-list.php">Find Arena</a></li>
         <li><a href="my-bookings.php" class="black-text">My Bookings</a></li>
         <li><a href="logout.php" class="black-text">Logout</a></li>
     <?php endif; ?>

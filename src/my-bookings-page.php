@@ -22,6 +22,7 @@ if (!$status["db_error"]) {
 
     <ul class="sidenav" id="sm-menu" appears="mobile">
         <li class="active"><a href="index.php">Home</a></li>
+        <li><a href="stadiums-list.php">Find Arena</a></li>
         <li><a href="my-bookings.php" class="black-text">My Bookings</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
