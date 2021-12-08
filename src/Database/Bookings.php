@@ -37,5 +37,26 @@ class Bookings {
     $status = ["name" => $user_info["name"], "is_valid" => true, "email"=>$user_info["email"]];
     return $status;
  }
+
+ public static function getUserBookings(int $userID): array {
+  $status = ["db_error" => NULL, "bookings" => NULL];
+  $conn = self::getConn();
+
+  //Retrieve Bookings
+  $SQL = "SELECT name,location,b.slot,phone_number FROM bookings b
+            JOIN stadiums s ON b.stadium_id=s.id
+          WHERE b.user_id=? and b.is_deleted=false";
+  $stmt = $conn->prepare($SQL);
+  if (!$stmt) {
+    $status["db_error"] = "Transaction Error";
+    return $status;
+  }
+  $stmt->bind_param("i", $userID);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $stmt->close();
+  $status['bookings'] =  $result->fetch_all(MYSQLI_ASSOC);
+  return $status;
+}
 }
 ?>

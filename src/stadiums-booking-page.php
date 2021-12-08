@@ -5,9 +5,9 @@ use Arena\Helpers\Mail;
 
 $is_success = false;
 if (isset($_GET['userid']) && isset($_GET['stadiumId'])) {
-    $userID = (int)$_GET['userid'];
+    $user_id = (int)$_GET['userid'];
     $stadiumID = (int) $_GET['stadiumId'];
-    $status = Bookings::createBooking($userID, $stadiumID);
+    $status = Bookings::createBooking($user_id, $stadiumID);
     if($status["is_valid"]) {
         Mail::notifySpotBooked($status["email"], $status["name"]);
         $is_success = true;
@@ -25,7 +25,7 @@ if (isset($_GET['userid']) && isset($_GET['stadiumId'])) {
             <div class="row">
                 <h5 class="col s12"><blockquote>Status: Booking Created Successfully</blockquote></h5>
                 <p class="col s12">Check your email for more details.<sup><b style="color:blue">(Check spam if not received)</b></sup></p>
-                <div class="col s6"> <a href="bookings.php" class="btn-small waves-effect waves-light blue-grey darken-4 white-text">Your Bookings</a></div>
+                <div class="col s6"> <a href="my-bookings.php" class="btn-small waves-effect waves-light blue-grey darken-4 white-text">Your Bookings</a></div>
             </div>
         <?php else : ?>
             <div class="row">

@@ -27,7 +27,7 @@ class Stadiums {
      }
 
      public static function getStadiumsList(): array {
-        $status = ["db_error" => NULL, "list" => array()];
+        $status = ["db_error" => NULL, "list" => NULL];
         $conn = self::getConn();
 
         $sql = "SELECT * FROM stadiums WHERE is_active=true and is_deleted=false;";
@@ -39,11 +39,7 @@ class Stadiums {
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
-        $list =  $result->fetch_all(MYSQLI_ASSOC);
-        if(!isset($list)) {
-            return $status;
-        }
-        $status['list'] = array_merge($status["list"],$list);
+        $status["list"] =  $result->fetch_all(MYSQLI_ASSOC);
         return $status;
      }
 }

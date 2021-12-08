@@ -14,13 +14,13 @@ if (!$status["db_error"]) {
 ?>
 <header>
     <ul id="dropdown-account" class="dropdown-content">
-        <li><a href="user-bookings.php" class="black-text">My Bookings</a></li>
+        <li><a href="my-bookings.php" class="black-text">My Bookings</a></li>
         <li><a href="logout.php" class="black-text">Logout</a></li>
     </ul>
 
     <ul class="sidenav" id="sm-menu" appears="mobile">
         <li class="active"><a href="index.php">Home</a></li>
-        <li><a href="user-bookings.php" class="black-text">My Bookings</a></li>
+        <li><a href="my-bookings.php" class="black-text">My Bookings</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
     <nav>
@@ -52,7 +52,7 @@ if (!$status["db_error"]) {
                     <div class="col s12 m6">
                         <div class="card z-depth-3">
                             <div class="card-image">
-                                <img src="src/<?php echo $stadium['image_src'] ?>" style="height:220px">
+                                <img loading="lazy" src="src/<?php echo $stadium['image_src'] ?>" style="height:220px">
                                 <span class="card-title"><?php echo $stadium['name'] ?></span>
                             </div>
                             <div class="card-content">
