@@ -5,8 +5,8 @@
         <li><a href="login.php" class="black-text">Login</a></li>
         <li><a href="create-account.php" class="black-text">Signup</a></li>
     <?php else : ?>
+        <li><a href="user-bookings.php" class="black-text">My Bookings</a></li>
         <li><a href="logout.php" class="black-text">Logout</a></li>
-        <li><a href="user-bookings.php" class="black-text">Your Bookings</a></li>
     <?php endif; ?>
 </ul>
 
@@ -18,8 +18,8 @@
         <li><a href="login.php">Login</a></li>
         <li><a href="create-account.php">Signup</a></li>
     <?php else : ?>
-        <li><a href="user-bookings.php" class="black-text">Your Bookings</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="user-bookings.php" class="black-text">My Bookings</a></li>
+        <li><a href="logout.php" class="black-text">Logout</a></li>
     <?php endif; ?>
 </ul>
     <nav>

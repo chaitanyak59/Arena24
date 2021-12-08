@@ -24,7 +24,7 @@ if (isset($_GET['userid']) && isset($_GET['stadiumId'])) {
         <?php if ($is_success) : ?>
             <div class="row">
                 <h5 class="col s12"><blockquote>Status: Booking Created Successfully</blockquote></h5>
-                <p class="col s12">Check your email for more details.</p>
+                <p class="col s12">Check your email for more details.<sup><b style="color:blue">(Check spam if not received)</b></sup></p>
                 <div class="col s6"> <a href="bookings.php" class="btn-small waves-effect waves-light blue-grey darken-4 white-text">Your Bookings</a></div>
             </div>
         <?php else : ?>

@@ -14,13 +14,13 @@ if (!$status["db_error"]) {
 ?>
 <header>
     <ul id="dropdown-account" class="dropdown-content">
-        <li><a href="user-bookings.php" class="black-text">Your Bookings</a></li>
+        <li><a href="user-bookings.php" class="black-text">My Bookings</a></li>
         <li><a href="logout.php" class="black-text">Logout</a></li>
     </ul>
 
     <ul class="sidenav" id="sm-menu" appears="mobile">
         <li class="active"><a href="index.php">Home</a></li>
-        <li><a href="user-bookings.php" class="black-text">Your Bookings</a></li>
+        <li><a href="user-bookings.php" class="black-text">My Bookings</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
     <nav>

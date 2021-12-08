@@ -39,6 +39,7 @@ if (isset($_POST['submit'])) {
         <?php if ($is_success) : ?>
             <div class="row">
                 <h5 class="col s12"><blockquote>Status: Account Created Successfully</blockquote></h5>
+                <p class="col s12">Confirmation email will be sent shortly.<sup><b style="color:blue">(Check spam if not received)</b></sup></p>
                 <div class="col s6"> <a href="login.php" class="btn-small waves-effect waves-light blue-grey darken-4 white-text">Login</a></div>
             </div>
         <?php else : ?>
