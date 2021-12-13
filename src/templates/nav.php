@@ -12,7 +12,7 @@
 
 <ul class="sidenav" id="sm-menu" appears="mobile">
     <li class="active"><a href="#">Home</a></li>
-    <li><a href="#" class="">About</a></li>
+    <li><a href="#about" class="">About</a></li>
     <!-- Check Logged In or not -->
     <?php if ($loggedInUser == NULL) : ?>
         <li><a href="login.php">Login</a></li>
@@ -29,7 +29,7 @@
             <a href="./" class="brand-logo">Arena24</a>
             <ul class="right hide-on-med-and-down" appears="desktop">
                 <li class="active"><a href="">Home</a></li>
-                <li><a href="#" class="">About</a></li>
+                <li><a href="#about" class="">About</a></li>
                 <!-- Check Logged In or not -->
                 <?php if ($loggedInUser == NULL) : ?>
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown-account">Account<i class="material-icons right">arrow_drop_down</i></a></li>
