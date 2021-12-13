@@ -27,7 +27,20 @@ class Mail {
                                 <h3>Your arena spot has been booked <u>successfully</u>.<br>
                                  'Please reach on time and enjoy playing'.<br><br><br>
                                  Thankyou,<br>Team Arena24.</h3>",$userName);
-            self::prepareMailing($toAddress, "Booking Created Successfully", $body);
+            self::prepareMailing($toAddress, "Spot Booked Successfully", $body);
+            return "Success";
+        } catch(Exception $e) {
+            return "Failed";
+        }
+    }
+
+    public static function notifySpotCancelled(string $toAddress, string $userName): string {
+        try {
+            $body = sprintf("<h2>Hello <b>%s</b>,</h2>
+                                <h3>Your arena spot has been cancelled <u>successfully</u>.<br>
+                                 <br><br><br>
+                                 Thankyou,<br>Team Arena24.</h3>",$userName);
+            self::prepareMailing($toAddress, "Booking Cancelled Successfully", $body);
             return "Success";
         } catch(Exception $e) {
             return "Failed";

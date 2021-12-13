@@ -62,7 +62,12 @@ if (!$status["db_error"]) {
                 <td><?php echo $booking['location']?></td>
                 <td><?php echo $booking['phone_number']?></td>
                 <td><?php echo $booking['slot']?></td>
-                <td class="red-text">Not Paid</td>
+                <td class="red-text text-lighten-2">Not Paid</td>
+                <td><a class="waves-effect waves-light btn red lighten-2"
+                        id="cancel_booking"
+                        href="javascript:cancelBooking('Do you want to cancel booking?','delete-booking.php?id=<?php echo $booking['id'];?>')">Cancel
+                    </a>
+                </td>
             </tr>
         <?php endforeach;?>
         </tbody>
@@ -70,3 +75,10 @@ if (!$status["db_error"]) {
         <?php endif; ?>
 
 </main>
+<script>
+    function cancelBooking(msg, url) {
+        if(confirm(msg)) {
+            window.location =url;
+        }
+    }
+</script>
